@@ -1,8 +1,7 @@
 <div class="post">
 	<h2 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 	<div class="post-meta">
-		Posted by <a href="#" class="post-author"><?php the_author(); ?></a>
-		on <span class="post-date"><?php the_date(); ?></span>
+		Posted on <span class="post-date"><?php echo get_the_date(); ?> </span>
 		<?php if ( comments_open() || get_comments_number() ) : ?>
 			&minus; <i class="fa fa-comment-o" aria-hidden="true"></i><a class="post-comment-link" href="<?php comments_link(); ?>">
 			<?php
@@ -15,6 +14,11 @@
 		<?php endif; ?>
 		
 	</div>
+	<a href="<?php the_permalink(); ?>">
+		<div class="post-thumbnail">
+			<?php the_post_thumbnail(); ?>
+		</div>
+	</a>
 	<div class="post-content">
 		<?php the_excerpt(); ?>
 	</div>

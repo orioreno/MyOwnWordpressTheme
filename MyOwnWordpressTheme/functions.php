@@ -29,3 +29,29 @@ if (function_exists('register_sidebar')) {
 			'after_title'   => '</h4>'
 	));
 }
+
+/* Tampilkan menu tambah featured image di post untuk thumbnail */
+add_theme_support( 'post-thumbnails' );
+set_post_thumbnail_size( 800, 500);
+
+/* Ubah excerpt jadi read more */
+function wpdocs_excerpt_more( $more ) {
+    return sprintf( ' [...] <div class="post-read-more"><a class="read-more mybtn" href="%1$s">%2$s</a></div>',
+        get_permalink( get_the_ID() ),
+        __( 'See full post', 'textdomain' )
+    );
+}
+add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
+
+/* Ubah jumlah kata di excerpt post */
+function wpdocs_custom_excerpt_length() {
+    return 200;
+}
+add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length');
+
+/* Tambahkan atribut di link next / previous post */
+function posts_link_attributes() {
+    return 'class="mybtn"';
+}
+add_filter('next_posts_link_attributes', 'posts_link_attributes');
+add_filter('previous_posts_link_attributes', 'posts_link_attributes');

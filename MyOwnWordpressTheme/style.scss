@@ -1,0 +1,562 @@
+/*
+Theme Name: MasterAJW
+Author: Andy Januar
+Author URI: http://andyjanuar.me/
+Description: Theme for my first blog
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: elegant black white gray
+Text Domain: andyjanuar
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+@font-face {
+  font-family: 'Telegrafico';
+  src: url('./font/telegrafico.ttf') format('truetype');
+}
+
+$default-font-family : 'Helvetica', sans-serif;
+$primary-font-color: #212121;
+$primary-heading-color: #424242;
+$content-width : 65%;
+$content-width-mobile : 90%;
+$button-default-bg : #9E9E9E;
+$button-default-color : #FAFAFA;
+$button-default-hover-bg : #424242;
+$transition-time : .3s;
+
+$information-phone: "(max-width : 450px)";
+
+@mixin responsive-phone-width() {
+	@media #{$information-phone} {
+		width: 90%;
+	}
+}
+
+@mixin transition-setup() {
+	-o-transition:$transition-time;
+	-ms-transition:$transition-time;
+	-moz-transition:$transition-time;
+	-webkit-transition:$transition-time;
+	transition:$transition-time;
+}
+
+@mixin button-style($type) {
+	display:inline-block;
+	padding:8px 12px;
+	margin-right:5px;
+	text-decoration:none;
+	cursor:pointer;
+	border:1px solid #9E9E9E;
+	@include transition-setup;
+	&:hover {
+		border-color:#212121;
+	}
+	@if $type == 'submit' {
+		background-color: #4CAF50;
+		border-color:#388E3C;
+		color:white;
+		&:hover {
+			background-color:#388E3C;
+			border-color:#2E7D32;
+		}
+	} @else {
+		background-color: $button-default-bg;
+		color:$button-default-color;
+		&:hover {
+			background-color: $button-default-hover-bg;
+		}
+	}
+}
+
+root, body {
+	margin:0;
+	padding:0;
+	font-family: $default-font-family;
+	background-color:#FFFFFF;
+	color: $primary-font-color;
+}
+
+// =================================
+// BUTTON
+// =================================
+.mybtn {
+	@include button-style('default');
+	.submit {
+		@include button-style('submit');
+	}
+}
+
+// =================================
+// HEADER
+// =================================
+#header { 
+	border-bottom:3px solid #E0E0E0;
+	> .header-container {
+		width:90%;
+		padding:30px 0px;
+		margin:auto;
+		> .brand {
+			text-decoration:none;
+			color: $primary-heading-color;
+			> img {
+				height:60px;
+				border-radius:100%;
+				box-shadow: 0px 0px 7px #9E9E9E;
+			}
+			> h1 {
+				font-family: Telegrafico, sans-serif;
+				color: $primary-heading-color;
+				display:inline-block;
+				font-size:2em;
+				letter-spacing:2px;
+				@include transition-setup;
+				&:hover {
+					text-shadow:5px 5px 5px #EEE;
+				}
+			}
+		}
+		@media #{$information-phone} {
+			text-align:center;
+		}
+	}
+	
+}
+
+.menu-navigations-container {
+	display:inline-block;
+	position:relative;
+	float:right;
+	@media #{$information-phone} {
+		float:none;
+		display:block;
+	}
+}
+#menu-navigations {
+	color:#9E9E9E;
+	padding:10px;
+	@media #{$information-phone} {
+		padding:0px;
+	}
+	> li {
+		display:inline;
+		> a {
+			text-decoration:none;
+			color:#9E9E9E;
+			padding-right:15px;
+			margin-right:10px;
+			font-size:0.9em;
+			letter-spacing:1px;
+			@include transition-setup;
+			&:hover {
+				color:#424242;
+			}
+		}
+		&:last-child > a {
+			padding-right:0px;
+			margin-right:0px;
+		}
+	}
+}
+
+
+// =================================
+// FOOTER
+// =================================
+#footer {
+	padding:20px 0px;
+	border-top:1px solid #BDBDBD;
+}
+.footer-wrapper {
+	margin:0px auto; 
+	color: $primary-font-color;
+	width: 90%; 
+	text-align:right;
+	@media #{$information-phone} {
+		text-align:center;
+	}
+	> .contact-link > a {
+		position:relative;
+		text-decoration:none;
+		color:#9E9E9E;
+		margin-left:10px;
+		display:inline-block;
+		&:not(.wborder) > i {
+			font-size:2em;
+		}
+		&.wborder {
+			border-radius:3px;
+			position:relative;
+			top:-6.5px;
+			padding:5px 10px;
+			color:$button-default-color;
+			background-color:$button-default-bg;
+			font-size:0.9em;
+			&:hover {
+				background-color: $button-default-hover-bg;
+			}
+			@media #{$information-phone} {
+				display:block;
+			}
+		}
+	}
+}
+
+// =================================
+// ICON HOVER
+// =================================
+.icon-facebook:hover { color: #3B5998 !important; }
+.icon-instagram:hover { color: #000 !important;}
+.icon-linkedin:hover { color: #1B86BC !important; }
+
+
+// =================================
+// CONTENT
+// =================================
+#content {
+	margin:auto;
+	width: $content-width;
+	color:$primary-heading-color;
+	margin-top:50px;
+	@include responsive-phone-width;
+}
+
+
+
+// =================================
+// SIDEBAR
+// =================================
+#sidebar {
+	background-color:#EEEEEE;
+}
+
+.sidebar-wrapper {
+	width: $content-width;
+	margin:auto;
+	padding:20px 0px;
+	@include responsive-phone-width;
+	> h2 {
+		color:$primary-heading-color;
+		padding:0px;
+		margin-bottom:5px;
+	}
+	> ul {
+		display:block;
+		margin:0;
+		padding:0;
+		margin-bottom:30px;
+		> li {
+			@include button-style('default');
+			padding:8px 15px;
+			margin-right:5px;
+			> a {
+				text-decoration:none;
+				color:$button-default-color;
+			}
+		}
+	}
+}
+
+// =================================
+// POST
+// =================================
+.post {
+	margin-bottom:70px;
+}
+
+.post-title {
+	padding:0;
+	margin:0;
+	margin:auto;
+	> a {
+		text-decoration:none;
+		color:$primary-heading-color;
+		font-size:1.3em;
+	}
+}
+
+.post-meta {
+	font-size:0.9em;
+	margin:auto;
+	margin-top:10px;
+	border-left:12px solid #eee;
+	padding-left:10px;
+	color:#9E9E9E;
+	> .post-author,.post-date,.post-comment-link {
+		text-decoration:none;
+		color: $primary-heading-color;
+	}
+	> a:hover {
+		text-decoration:underline;
+	}
+}
+
+.post-thumbnail {
+	display:block;
+	margin-top:25px;
+	margin-bottom:0px;
+	> img {
+		max-width:100%;
+		height:auto;
+	}
+}
+
+.post-content {
+	&.single-post-content {
+		margin-top:50px;
+	}
+	> p {
+		margin:1em auto;
+		line-height: 1.5em;
+		img {
+			max-width:100%;
+			height:auto;
+		}
+	}
+}
+
+img.alignright {float:right; margin:0 0 1em 1em}
+img.alignleft {float:left; margin:0 1em 1em 0}
+img.aligncenter {display: block; margin-left: auto; margin-right: auto}
+a img.alignright {float:right; margin:0 0 1em 1em}
+a img.alignleft {float:left; margin:0 1em 1em 0}
+a img.aligncenter {display: block; margin-left: auto; margin-right: auto}
+
+.post-read-more {
+	margin-top:10px;
+	> a.read-more {
+		
+	}
+}
+
+// =================================
+// WP-CAPTION
+// =================================
+.wp-caption {
+	&.alignleft {
+		float:left;
+		position:relative;
+		display:inline-block;
+		margin-right:20px;
+		margin-bottom:20px;
+	}
+}
+
+// =================================
+// PAGER
+// =================================
+.pager {
+	margin-top:20px;
+	margin-bottom:50px;
+}
+
+// =================================
+// COMMENTS
+// =================================
+#comments {
+	background-color:#EEEEEE;
+}
+.comments-wrapper {
+	width: $content-width;
+	margin:auto;
+	padding: 20px 0px 40px 0px;
+	position:relative;
+	@include responsive-phone-width;
+	> .comments-inner-wrapper {
+		position:relative;
+	}
+}
+
+.comments-number {
+	top:-50px;
+	right:0px;
+	position:absolute;
+	text-align:center;
+	background-color:#FFFFFF;
+	border-radius:20px;
+	padding:30px 40px;
+	-ms-transform: rotate(20deg); /* IE 9 */
+	-webkit-transform: rotate(20deg); /* Chrome, Safari, Opera */
+	transform: rotate(20deg);
+	border:7px solid #eee;
+	&:after {
+		content:"";
+		position:absolute;
+		bottom:-20px; /* value = - border-top-width - border-bottom-width */
+		left:50px; /* controls horizontal position */
+		border-width:25px 25px 0 0; /* vary these values to change the angle of the vertex */
+		border-style:solid;
+		border-color:#FFFFFF transparent;
+		/* reduce the damage in FF3.0 */
+		display:block;
+		width:0;
+	}
+	> a {
+		font-size:3em;
+		color:#BDBDBD;
+		vertical-align:middle;
+		display: table-cell;
+		text-shadow:2px 2px #F5F5F5;
+		text-decoration:none;
+		font-weight:bold;
+	}
+	@media #{$information-phone} {
+		padding:10px 15px;
+		> a {
+			font-size:2em;
+		}
+		&:after {
+			border-width:15px 15px 0 0; /* vary these values to change the angle of the vertex */
+			bottom:-12px;
+		}
+	}
+}
+
+
+// =================================
+// COMMENTS - RESPOND FORM
+// =================================
+#respond {
+	color:#424242;
+	.comment-form {
+		padding-bottom:15px;
+		width:60%;
+		margin:0;
+		@media #{$information-phone} {
+			width:100%;
+			display:block;
+		}
+		> .logged-in-as,.comment-notes {
+			font-size:0.8em;
+		}
+		> .logged-in-as > a{
+			text-decoration:none;
+			color:#757575;
+		}
+		> p {
+			position:relative;
+			width:100%;
+			> label{
+				display:block;
+			}
+			> textarea,input[type="text"],input[type="email"]{
+				width:95%;
+				padding:5px;
+				font-family:sans-serif;
+			}
+		}
+		> .form-submit > #submit {
+			@include button-style('submit');
+		}
+	}
+}
+
+
+// =================================
+// COMMENTS - LIST
+// =================================
+.comments-list {
+	display:block;
+	padding:0;
+	li {
+		display:block;
+		padding:0;
+		margin:0;
+		color:#424242;
+		margin-top:10px;
+	}
+}
+
+
+$author-picture-width: 70px;
+$children-author-picture-divider: 2;
+$mobile-author-picture-divider: 1.5;
+.comment-body {
+	padding:14px 20px;
+	@media #{$information-phone} {
+		padding:10px;
+	}
+	&.selected {
+		background-color:#FAFAFA;
+		border-radius:10px;
+	}
+	&:hover {
+		background-color:#FAFAFA;
+		border-radius:10px;
+	}
+	> .comment-author {
+		> img {
+			float:left;
+			margin-right:20px;
+			border-radius:100%;
+			width:$author-picture-width;
+			height:auto;
+			border:5px solid white;
+			.children & {
+				width:($author-picture-width / $children-author-picture-divider);
+				border-width:4px;
+			}
+			@media #{$information-phone} {
+				width: ($author-picture-width / $mobile-author-picture-divider);
+				margin-right:10px;
+			}
+		}
+		> cite {
+			font-weight:bold;
+			> a {
+				color: $primary-font-color;
+				text-decoration:none;
+				&:hover {
+					text-decoration:underline;
+				}
+			}
+		}
+	}
+	> .comment-meta {
+		margin-top:3px;
+		font-size:0.8em;
+		> a {
+			text-decoration:none;
+			color:#757575;
+		}
+	}
+	> p {
+		padding-left:$author-picture-width + 30;
+		.children & {
+			padding-left:($author-picture-width - 7);
+		}
+		@media #{$information-phone} {
+			padding-left:($author-picture-width / $mobile-author-picture-divider) + 20;
+			.children & {
+				padding-left:($author-picture-width / $children-author-picture-divider) + 19;
+			}
+		}
+	}
+	> .reply {
+		padding-left:$author-picture-width + 30;
+		> .comment-reply-link {
+			@include button-style('default');
+			padding:4px 5px;
+			font-size:0.7em;
+		}
+		.children & {
+			padding-left:($author-picture-width - 7);
+		}
+		@media #{$information-phone} {
+			padding-left:($author-picture-width / $mobile-author-picture-divider) + 20;
+			.children & {
+				padding-left:($author-picture-width / $children-author-picture-divider) + 19;
+			}
+		}
+	}
+}
+
+.no-comments {
+	padding-top:20px;
+	padding-bottom:20px;
+	color:#F44336;
+}
+

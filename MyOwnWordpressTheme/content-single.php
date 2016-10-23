@@ -16,6 +16,9 @@
 		
 	</div>
 
+	<div class="post-thumbnail">
+		<?php the_post_thumbnail(); ?>
+	</div>
 	<div class="post-content single-post-content">
 		<?php the_content(); ?>
 	</div>

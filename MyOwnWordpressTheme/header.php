@@ -11,8 +11,10 @@
 </head>
 <body>
 	<div id="header">
-		<a href="<?php bloginfo('wpurl');?>" title="<?php echo get_bloginfo( 'name' ); ?>" class="brand">
-			<h1><?php echo get_bloginfo( 'name' ); ?></h1>
-		</a>
-		<?php wp_nav_menu(); ?>
+		<div class="header-container">
+			<a href="<?php bloginfo('wpurl');?>" title="<?php echo get_bloginfo( 'name' ); ?>" class="brand">
+				<h1><?php echo get_bloginfo( 'name' ); ?></h1>
+			</a>
+			<?php wp_nav_menu(); ?>
+		</div>
 	</div>
